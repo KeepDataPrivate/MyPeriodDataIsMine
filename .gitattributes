@@ -1,0 +1,4 @@
+# Specify lf EOL for all text files
+* text=auto eol=lf
+# Except for bat files, which are Windows only files
+*.bat eol=crlf
