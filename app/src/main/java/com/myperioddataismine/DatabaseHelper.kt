@@ -11,14 +11,17 @@ class DatabaseHelper(context: Context, filename: String, passcode: String) :
         passcode,
         null,
         DB_VERSION,
-        1,
+        2,
         null,
         null,
         true
     ) {
 
-    private val tables = Array<Table>(1) {
-        UserData
+    private val tables = Array(1) {
+        when (it) {
+            0 -> DayData
+            else -> throw Exception("DatabaseHelper's tables array creation index error.")
+        }
     }
 
    override fun onCreate(db: SQLiteDatabase) {
@@ -34,6 +37,6 @@ class DatabaseHelper(context: Context, filename: String, passcode: String) :
     }
 
     companion object {
-        const val DB_VERSION: Int = 1
+        const val DB_VERSION: Int = 2
     }
 }

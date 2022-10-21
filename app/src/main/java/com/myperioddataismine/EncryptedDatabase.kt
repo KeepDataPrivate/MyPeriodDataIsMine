@@ -2,6 +2,7 @@ package com.myperioddataismine
 
 import android.content.Context
 import android.database.sqlite.SQLiteException
+import java.util.Calendar
 
 class EncryptedDatabase(private val context: Context) {
     private var databaseHelper: DatabaseHelper? = null
@@ -32,6 +33,7 @@ class EncryptedDatabase(private val context: Context) {
     }
 
     fun delete() {
+        databaseHelper = null
         val databaseFile = context.getDatabasePath(DB_FILENAME)
         databaseFile.delete()
     }
@@ -40,12 +42,12 @@ class EncryptedDatabase(private val context: Context) {
         databaseHelper!!.writableDatabase.changePassword(passcode)
     }
 
-    fun getUserData(): UserData {
-        return UserData.get(databaseHelper!!.writableDatabase)
+    fun getDayData(date: Calendar): DayData {
+        return DayData.get(databaseHelper!!.writableDatabase, date)
     }
 
-    fun saveUserData(userData: UserData) {
-        UserData.save(userData, databaseHelper!!.writableDatabase)
+    fun saveDayData(dayData: DayData) {
+        DayData.save(dayData, databaseHelper!!.writableDatabase)
     }
 
     companion object {
