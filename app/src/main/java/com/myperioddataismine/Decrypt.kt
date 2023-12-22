@@ -3,15 +3,18 @@ package com.myperioddataismine
 import android.os.Bundle
 import android.widget.Button
 import android.widget.EditText
+import androidx.appcompat.app.AlertDialog
 import androidx.appcompat.app.AppCompatActivity
 
 class Decrypt : AppCompatActivity() {
+    private lateinit var encryptedDatabase: EncryptedDatabase
     private lateinit var passcodeEditText: EditText
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.decrypt)
 
+        encryptedDatabase = EncryptedDatabase(applicationContext)
         passcodeEditText = findViewById(R.id.passcode_edit_text)
 
         findViewById<Button?>(R.id.number_0_button).setOnClickListener {
@@ -63,6 +66,33 @@ class Decrypt : AppCompatActivity() {
     }
 
     private fun submit() {
-        TODO("Not yet implemented")
+        val passcode = passcodeEditText.text.toString()
+        try {
+            encryptedDatabase.open(passcode)
+            dataDecryptedMessage("Database opened!")
+            encryptedDatabase.close()
+        } catch (e: Exception) {
+            e.printStackTrace()
+            dataErasePrompt()
+        }
+    }
+
+    private fun dataDecryptedMessage(contents: String) {
+        AlertDialog.Builder(this)
+            .setTitle("Data decrypted!")
+            .setMessage(contents)
+            .setPositiveButton("OK") { _, _ -> }
+            .show()
+    }
+
+    private fun dataErasePrompt() {
+        AlertDialog.Builder(this)
+            .setTitle("Erase data?")
+            .setMessage("Unable to decrypt data!")
+            .setPositiveButton("Retry") { _, _ -> }
+            .setNegativeButton("Erase") { _, _ ->
+                encryptedDatabase.delete()
+            }
+            .show()
     }
 }

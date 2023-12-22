@@ -40,4 +40,6 @@ dependencies {
     implementation(libs.android.material)
     implementation(libs.androidx.appcompat)
     implementation(libs.androidx.core.ktx)
+    implementation(libs.androidx.sqlite)
+    implementation(libs.sqlcipher)
 }
