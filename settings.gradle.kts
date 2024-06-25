@@ -15,4 +15,4 @@ dependencyResolutionManagement {
 }
 
 rootProject.name = "My Period Data Is Mine!"
-include ':app'
+include(":app")

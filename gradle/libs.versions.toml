@@ -1,15 +1,15 @@
 [versions]
-androidCoreKTX = '1.13.1'
-androidGradlePlugin = "8.5.0"
-androidMaterial = '1.12.0'
-androidXAppCompat = '1.7.0'
-kotlinAndroid = '1.9.0'
+android-gradle-plugin = '8.5.0'
+android-material = '1.12.0'
+androidx-appcompat = '1.7.0'
+androidx-core-ktx = '1.13.1'
+kotlin-android = '1.9.0'
 
 [plugins]
-androidApplication = { id = 'com.android.application', version.ref = 'androidGradlePlugin' }
-kotlinAndroid = { id = 'org.jetbrains.kotlin.android', version.ref = 'kotlinAndroid' }
+android-application = { id = 'com.android.application', version.ref = 'android-gradle-plugin' }
+kotlin-android = { id = 'org.jetbrains.kotlin.android', version.ref = 'kotlin-android' }
 
 [libraries]
-androidCoreKTX = { module = 'androidx.core:core-ktx', version.ref = 'androidCoreKTX' }
-androidMaterial = { module = 'com.google.android.material:material', version.ref = 'androidMaterial' }
-androidXAppCompat = { module = 'androidx.appcompat:appcompat', version.ref = 'androidXAppCompat' }
+android-material = { module = 'com.google.android.material:material', version.ref = 'android-material' }
+androidx-appcompat = { module = 'androidx.appcompat:appcompat', version.ref = 'androidx-appcompat' }
+androidx-core-ktx = { module = 'androidx.core:core-ktx', version.ref = 'androidx-core-ktx' }
