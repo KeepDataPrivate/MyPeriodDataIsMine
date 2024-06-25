@@ -16,29 +16,24 @@ class DatabaseHelper(context: Context, filename: String, passcode: String) :
         null,
         true
     ) {
-    override fun onCreate(db: SQLiteDatabase) {
-        db.execSQL(CREATE_TABLE)
+
+    private val tables = Array<Table>(1) {
+        UserData
+    }
+
+   override fun onCreate(db: SQLiteDatabase) {
+       for (table in tables) {
+           table.createTable(db)
+       }
     }
 
     override fun onUpgrade(db: SQLiteDatabase, oldVersion: Int, newVersion: Int) {
-        db.execSQL("DROP TABLE IF EXISTS $TABLE_NAME")
-        onCreate(db)
+        for (table in tables) {
+            table.upgradeTable(db, oldVersion, newVersion)
+        }
     }
 
     companion object {
         const val DB_VERSION: Int = 1
-
-        // Table Name
-        const val TABLE_NAME: String = "Users"
-        // Table columns
-        const val ID: String = "_id"
-        const val NAME: String = "Name"
-
-        // Creating table query
-        private const val CREATE_TABLE = (
-            "CREATE TABLE " + TABLE_NAME + "(" +
-                ID + " INTEGER PRIMARY KEY AUTOINCREMENT, " +
-                NAME + " TEXT NOT NULL);"
-        )
     }
 }

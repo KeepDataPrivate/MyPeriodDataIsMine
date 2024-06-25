@@ -8,12 +8,12 @@
     android:gravity="center"
 >
     <TextView
+        android:id="@+id/passcode_message_text"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:gravity="center_horizontal"
         android:textSize="20sp"
         android:textStyle="bold"
-        android:text="@string/decrypt_text"
     />
     <EditText
         android:id="@+id/passcode_edit_text"
