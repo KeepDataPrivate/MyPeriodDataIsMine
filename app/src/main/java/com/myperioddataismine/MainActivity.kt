@@ -1,6 +1,9 @@
 package com.myperioddataismine
 
 import android.os.Bundle
+import android.view.Menu
+import android.view.MenuInflater
+import android.view.MenuItem
 import androidx.activity.viewModels
 import androidx.appcompat.app.AlertDialog
 import androidx.appcompat.app.AppCompatActivity
@@ -14,7 +17,8 @@ class MainActivity : AppCompatActivity() {
     private enum class PasscodeState {
         None,
         CreateDatabase,
-        DecryptDatabase
+        DecryptDatabase,
+        ChangePasscode
     }
 
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -26,6 +30,25 @@ class MainActivity : AppCompatActivity() {
             } else {
                 welcome()
             }
+        }
+    }
+
+    override fun onCreateOptionsMenu(menu: Menu): Boolean {
+        val inflater: MenuInflater = menuInflater
+        inflater.inflate(R.menu.main_menu, menu)
+        if (!viewModel.decryptedDatabaseIsOpen()) {
+            menu.findItem(R.id.change_passcode).setVisible(false)
+        }
+        return true
+    }
+
+    override fun onOptionsItemSelected(item: MenuItem): Boolean {
+        return when (item.itemId) {
+            R.id.change_passcode -> {
+                changePasscode()
+                true
+            }
+            else -> super.onOptionsItemSelected(item)
         }
     }
 
@@ -48,12 +71,17 @@ class MainActivity : AppCompatActivity() {
         getPasscode(PasscodeState.DecryptDatabase)
     }
 
+    private fun changePasscode() {
+        getPasscode(PasscodeState.ChangePasscode)
+    }
+
     private fun getPasscode(passcodeState: PasscodeState) {
         this.passcodeState = passcodeState
         invalidateMenu()
         val message = when (passcodeState) {
             PasscodeState.CreateDatabase -> resources.getString(R.string.encrypt_text)
             PasscodeState.DecryptDatabase -> resources.getString(R.string.decrypt_text)
+            PasscodeState.ChangePasscode -> resources.getString(R.string.change_passcode_text)
             PasscodeState.None -> throw Exception("Passcode state should never be None")
         }
         val bundle = Bundle()
@@ -67,11 +95,18 @@ class MainActivity : AppCompatActivity() {
     }
 
     fun tryPasscode(passcode: String) {
-        passcodeState = PasscodeState.None
-        if (viewModel.openDatabase(passcode)) {
-            viewUserData()
-        } else {
-            databaseErasePrompt()
+        when (passcodeState) {
+            PasscodeState.ChangePasscode -> {
+                viewModel.changePasscode(passcode)
+                viewUserData()
+            }
+            else -> {
+                if (viewModel.openDatabase(passcode)) {
+                    viewUserData()
+                } else {
+                    databaseErasePrompt()
+                }
+            }
         }
     }
 
@@ -94,6 +129,8 @@ class MainActivity : AppCompatActivity() {
             setReorderingAllowed(true)
             replace<UserDataViewFragment>(R.id.main_container)
         }
+        passcodeState = PasscodeState.None
+        invalidateMenu()
     }
 
     fun editUserData() {
