@@ -5,6 +5,7 @@ import androidx.lifecycle.AndroidViewModel
 
 class MainViewModel(application: Application) : AndroidViewModel(application) {
     private val encryptedDatabase = EncryptedDatabase(application)
+    private var userData: UserData? = null
 
     fun encryptedDatabaseExists(): Boolean {
         return encryptedDatabase.exists()
@@ -16,10 +17,13 @@ class MainViewModel(application: Application) : AndroidViewModel(application) {
 
     fun deleteDatabase() {
         encryptedDatabase.delete()
+        userData = null
     }
 
     fun getUserData(): UserData {
-        return encryptedDatabase.getUserData()
+        val data = userData ?: encryptedDatabase.getUserData()
+        userData = userData ?: data
+        return data
     }
 
     fun saveUserData(userData: UserData) {
