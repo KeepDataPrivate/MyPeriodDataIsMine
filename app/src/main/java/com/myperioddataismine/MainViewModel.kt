@@ -11,6 +11,10 @@ class MainViewModel(application: Application) : AndroidViewModel(application) {
         return encryptedDatabase.exists()
     }
 
+    fun decryptedDatabaseIsOpen(): Boolean {
+        return encryptedDatabase.isOpen()
+    }
+
     fun openDatabase(passcode: String): Boolean {
         return encryptedDatabase.open(passcode)
     }
@@ -18,6 +22,10 @@ class MainViewModel(application: Application) : AndroidViewModel(application) {
     fun deleteDatabase() {
         encryptedDatabase.delete()
         userData = null
+    }
+
+    fun changePasscode(passcode: String) {
+        encryptedDatabase.changePasscode(passcode)
     }
 
     fun getUserData(): UserData {

@@ -14,8 +14,7 @@ class EncryptedDatabase(private val context: Context) {
         return context.getDatabasePath(DB_FILENAME).exists()
     }
 
-    fun open(passcode: String): Boolean {
-        databaseHelper = DatabaseHelper(context, DB_FILENAME, passcode)
+    fun isOpen(): Boolean {
         try {
             val database = databaseHelper?.writableDatabase
             if (database != null) {
@@ -27,9 +26,18 @@ class EncryptedDatabase(private val context: Context) {
         return false
     }
 
+    fun open(passcode: String): Boolean {
+        databaseHelper = DatabaseHelper(context, DB_FILENAME, passcode)
+        return isOpen()
+    }
+
     fun delete() {
         val databaseFile = context.getDatabasePath(DB_FILENAME)
         databaseFile.delete()
+    }
+
+    fun changePasscode(passcode: String) {
+        databaseHelper!!.writableDatabase.changePassword(passcode)
     }
 
     fun getUserData(): UserData {
