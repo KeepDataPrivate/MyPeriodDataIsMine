@@ -43,5 +43,6 @@ dependencies {
     implementation(libs.androidx.fragment.ktx)
     implementation(libs.androidx.lifecycle.viewmodel.ktx)
     implementation(libs.androidx.sqlite)
+    implementation(libs.google.flexbox)
     implementation(libs.sqlcipher)
 }

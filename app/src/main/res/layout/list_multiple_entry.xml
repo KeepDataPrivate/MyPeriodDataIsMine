@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="horizontal"
+    android:descendantFocusability="blocksDescendants"
+>
+    <CheckBox
+        android:id="@+id/entry_check_box"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:clickable="false"
+    />
+    <include
+        android:id="@+id/entry_image"
+        layout="@layout/image_view"
+    />
+    <include
+        android:id="@+id/entry_text"
+        layout="@layout/text_view"
+    />
+</LinearLayout>

@@ -9,6 +9,7 @@ import androidx.appcompat.app.AlertDialog
 import androidx.appcompat.app.AppCompatActivity
 import androidx.fragment.app.commit
 import androidx.fragment.app.replace
+import java.util.Calendar
 
 class MainActivity : AppCompatActivity() {
     private val viewModel: MainViewModel by viewModels()
@@ -98,16 +99,22 @@ class MainActivity : AppCompatActivity() {
         when (passcodeState) {
             PasscodeState.ChangePasscode -> {
                 viewModel.changePasscode(passcode)
-                viewUserData()
+                databaseOpened()
             }
             else -> {
                 if (viewModel.openDatabase(passcode)) {
-                    viewUserData()
+                    databaseOpened()
                 } else {
                     databaseErasePrompt()
                 }
             }
         }
+    }
+
+    private fun databaseOpened() {
+        passcodeState = PasscodeState.None
+        invalidateMenu()
+        viewDayData()
     }
 
     private fun databaseErasePrompt() {
@@ -124,28 +131,48 @@ class MainActivity : AppCompatActivity() {
             .show()
     }
 
-    private fun viewUserData() {
+    private fun viewDayData() {
         supportFragmentManager.commit {
             setReorderingAllowed(true)
-            replace<UserDataViewFragment>(R.id.main_container)
-        }
-        passcodeState = PasscodeState.None
-        invalidateMenu()
-    }
-
-    fun editUserData() {
-        supportFragmentManager.commit {
-            setReorderingAllowed(true)
-            replace<UserDataEditFragment>(R.id.main_container)
+            replace<DayDataFragment>(R.id.main_container)
         }
     }
 
-    fun getUserData(): UserData {
-        return viewModel.getUserData()
+    fun viewPreviousDay() {
+        viewModel.date.add(Calendar.DATE, -1)
+        viewDayData()
     }
 
-    fun saveUserData(userData: UserData) {
-        viewModel.saveUserData(userData)
-        viewUserData()
+    fun viewNextDay() {
+        viewModel.date.add(Calendar.DATE, 1)
+        viewDayData()
+    }
+
+    fun editField(field: DayData.Field, currentValue: Int) {
+        val editFieldFragment = EditFieldFragment()
+        val bundle = Bundle()
+        bundle.putSerializable(EditFieldFragment.FIELD, field)
+        bundle.putInt(EditFieldFragment.VALUE, currentValue)
+        editFieldFragment.arguments = bundle
+        supportFragmentManager.commit {
+            setReorderingAllowed(true)
+            replace(R.id.main_container, editFieldFragment)
+            addToBackStack(null)
+        }
+    }
+
+    fun saveField(field: DayData.Field, value: Int) {
+        val dayData = viewModel.getDayData()
+        when (field) {
+            DayData.Field.FlowLevel -> dayData.flowLevel = value
+            DayData.Field.Moods -> dayData.moods = value
+            DayData.Field.Symptoms -> dayData.symptoms = value
+        }
+        viewModel.saveDayData(dayData)
+        back()
+    }
+
+    fun back() {
+        supportFragmentManager.popBackStack()
     }
 }
