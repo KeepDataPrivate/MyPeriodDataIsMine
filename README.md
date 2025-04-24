@@ -4,6 +4,8 @@
    <img src="my-period-data-is-mine-logo.svg" width="256" alt="My Period Data Is Mine!">
 </p>
 
+[![Build status](https://github.com/KeepDataPrivate/MyPeriodDataIsMine/actions/workflows/build-tests.yaml/badge.svg)](https://github.com/KeepDataPrivate/MyPeriodDataIsMine/actions/workflows/build-tests.yaml)
+
 Your personal data should be yours and yours only; especially if it as personal as your period data.
 
 I wouldn’t want my boss to know when I menstruate, just as I wouldn’t want to know when my neighbours have their periods. Each individual should own that information and control who they share it with and when.
