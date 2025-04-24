@@ -1,0 +1,35 @@
+name: Build Tests
+
+on:
+  push:
+  pull_request:
+
+concurrency:
+  group: ${{ github.workflow }}-${{ github.event.pull_requst.number || github.ref }}
+  cancel-in-progress: true
+
+jobs:
+  android-builds:
+    name: ${{ matrix.os }} build
+    runs-on: ${{ matrix.os }}
+    strategy:
+      matrix:
+        os: [ubuntu-latest, windows-latest, macos-latest]
+
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: Set up Java 17
+        uses: actions/setup-java@v4
+        with:
+          distribution: zulu
+          java-version: 17
+
+      - name: Gradle build
+        run: ./gradlew build
+
+      - name: Upload APK
+        uses: actions/upload-artifact@v4
+        with:
+          name: ${{ matrix.os }}-build-debug-apk
+          path: app/build/outputs/apk/debug/app-debug.apk
