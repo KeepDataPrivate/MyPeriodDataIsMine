@@ -9,6 +9,7 @@ import android.view.ViewGroup
 import android.widget.ImageView
 import android.widget.LinearLayout
 import android.widget.TextView
+import androidx.core.view.isEmpty
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.activityViewModels
 import com.google.android.flexbox.FlexboxLayout
@@ -72,7 +73,7 @@ class DayDataFragment : Fragment(R.layout.day_data_fragment) {
                 addImage(moodsViewGroup, DayData.moodValues[moodIndex])
             }
         }
-        if (moodsViewGroup.childCount == 0) {
+        if (moodsViewGroup.isEmpty()) {
             addText(moodsViewGroup, R.string.none)
         }
     }
@@ -83,7 +84,7 @@ class DayDataFragment : Fragment(R.layout.day_data_fragment) {
                 addImage(symptomsViewGroup, DayData.symptomValues[symptomIndex])
             }
         }
-        if (symptomsViewGroup.childCount == 0) {
+        if (symptomsViewGroup.isEmpty()) {
             addText(symptomsViewGroup, R.string.none)
         }
     }
