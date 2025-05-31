@@ -1,14 +1,14 @@
 [versions]
-android-gradle-plugin = '8.9.2'
+android-gradle-plugin = '8.10.1'
 android-material = '1.12.0'
 androidx-appcompat = '1.7.0'
 androidx-core-ktx = '1.16.0'
-androidx-fragment-ktx = '1.8.6'
-androidx-lifecycle-viewmodel-ktx = '2.8.7'
-androidx-sqlite = '2.5.0'
+androidx-fragment-ktx = '1.8.7'
+androidx-lifecycle-viewmodel-ktx = '2.9.0'
+androidx-sqlite = '2.5.1'
 google-flexbox = '3.0.0'
 kotlin-android = '2.0.0'
-sqlcipher = '4.7.2'
+sqlcipher = '4.9.0'
 
 [plugins]
 android-application = { id = 'com.android.application', version.ref = 'android-gradle-plugin' }
