@@ -36,6 +36,12 @@ android {
     }
 }
 
+kotlin {
+    compilerOptions {
+        allWarningsAsErrors = true
+    }
+}
+
 dependencies {
     implementation(libs.android.material)
     implementation(libs.androidx.appcompat)
