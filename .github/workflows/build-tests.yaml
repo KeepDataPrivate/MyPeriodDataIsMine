@@ -5,8 +5,8 @@ on:
   pull_request:
 
 concurrency:
-  group: ${{ github.workflow }}-${{ github.event.pull_request.number || github.ref }}
-  cancel-in-progress: true
+  group: build-test-${{ github.event.pull_request.number || github.ref_name }}
+  cancel-in-progress: ${{ github.ref_name != 'main' }}
 
 jobs:
   android-builds:
