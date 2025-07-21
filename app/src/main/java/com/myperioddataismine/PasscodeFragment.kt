@@ -18,40 +18,40 @@ class PasscodeFragment : Fragment(R.layout.passcode_fragment) {
 
         setMessageText(arguments?.getString("Message"))
 
-        view.findViewById<Button?>(R.id.number_0_button).setOnClickListener {
+        view.findViewById<Button>(R.id.number_0_button).setOnClickListener {
             passcodeAppend('0')
         }
-        view.findViewById<Button?>(R.id.number_1_button).setOnClickListener {
+        view.findViewById<Button>(R.id.number_1_button).setOnClickListener {
             passcodeAppend('1')
         }
-        view.findViewById<Button?>(R.id.number_2_button).setOnClickListener {
+        view.findViewById<Button>(R.id.number_2_button).setOnClickListener {
             passcodeAppend('2')
         }
-        view.findViewById<Button?>(R.id.number_3_button).setOnClickListener {
+        view.findViewById<Button>(R.id.number_3_button).setOnClickListener {
             passcodeAppend('3')
         }
-        view.findViewById<Button?>(R.id.number_4_button).setOnClickListener {
+        view.findViewById<Button>(R.id.number_4_button).setOnClickListener {
             passcodeAppend('4')
         }
-        view.findViewById<Button?>(R.id.number_5_button).setOnClickListener {
+        view.findViewById<Button>(R.id.number_5_button).setOnClickListener {
             passcodeAppend('5')
         }
-        view.findViewById<Button?>(R.id.number_6_button).setOnClickListener {
+        view.findViewById<Button>(R.id.number_6_button).setOnClickListener {
             passcodeAppend('6')
         }
-        view.findViewById<Button?>(R.id.number_7_button).setOnClickListener {
+        view.findViewById<Button>(R.id.number_7_button).setOnClickListener {
             passcodeAppend('7')
         }
-        view.findViewById<Button?>(R.id.number_8_button).setOnClickListener {
+        view.findViewById<Button>(R.id.number_8_button).setOnClickListener {
             passcodeAppend('8')
         }
-        view.findViewById<Button?>(R.id.number_9_button).setOnClickListener {
+        view.findViewById<Button>(R.id.number_9_button).setOnClickListener {
             passcodeAppend('9')
         }
-        view.findViewById<Button?>(R.id.del_button).setOnClickListener {
+        view.findViewById<Button>(R.id.del_button).setOnClickListener {
             passcodeDrop()
         }
-        view.findViewById<Button?>(R.id.ok_button).setOnClickListener {
+        view.findViewById<Button>(R.id.ok_button).setOnClickListener {
             submit()
         }
     }
