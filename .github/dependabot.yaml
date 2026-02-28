@@ -1,6 +1,7 @@
 version: 2
-multi-ecosystem-groups:
-  weekly-updates:
+updates:
+  - package-ecosystem: "github-actions"
+    directory: "/"
     schedule:
       interval: "weekly"
       day: "sunday"
@@ -9,21 +10,21 @@ multi-ecosystem-groups:
       - "PR Type: Maintenance"
     pull-request-branch-name:
       separator: "-"
-    groups:
-      version-updates:
-          patterns:
-             - "*"
-          update-types:
-            - "minor"
-            - "patch"
-
-updates:
-  - package-ecosystem: "github-actions"
-    multi-ecosystem-group: "weekly-updates"
-    patterns: ["*"]
-    directory: "/"
 
   - package-ecosystem: "gradle"
-    multi-ecosystem-group: "weekly-updates"
-    patterns: ["*"]
     directory: "/"
+    schedule:
+      interval: "weekly"
+      day: "sunday"
+      time: "01:00"
+    labels:
+      - "PR Type: Maintenance"
+    pull-request-branch-name:
+      separator: "-"
+    groups:
+      version-updates:
+        patterns:
+          - "*"
+        update-types:
+          - "minor"
+          - "patch"
