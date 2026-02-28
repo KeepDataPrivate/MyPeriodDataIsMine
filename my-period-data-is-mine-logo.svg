@@ -1,82 +1,112 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
 <svg
   id="MyPeriodDataIsMineLogo"
-  viewBox="0 0 256 256"
+  viewBox="0 0 128 128"
   version="1.1"
   xmlns="http://www.w3.org/2000/svg"
-  xmlns:svg="http://www.w3.org/2000/svg" >
-
-  <defs
-    id="Definitions">
+>
+  <defs>
     <linearGradient
-      id="RightLoopGradient" >
+      id="RightLoopGradient"
+    >
       <stop
         style="stop-color:#df28ce"
-        offset="0" />
+        offset="0"
+      />
       <stop
         style="stop-color:#2839df"
-        offset="1" />
+        offset="1"
+      />
     </linearGradient>
     <linearGradient
-      id="LeftLoopGradient" >
+      id="LeftLoopGradient"
+    >
       <stop
         style="stop-color:#f1bc1c"
-        offset="0" />
+        offset="0"
+      />
       <stop
         style="stop-color:#ea2ccb"
-        offset="1" />
+        offset="1"
+      />
     </linearGradient>
   </defs>
+  <g
+    id="My Period Data is Mine!"
+  >
+    <path
+      id="RightLeg"
+      style="
+        fill:none;
+        stroke:#3438de;
+        stroke-width:20;
+        stroke-linecap:round
+      "
+      d="
+        m 118,64
+          0,-47.5
+      "
+    />
+    <path
+      id="LeftLeg"
+      style="
+        fill:none;
+        stroke:#f1bc1c;
+        stroke-width:20;
+        stroke-linecap:round
+      "
+      d="
+        m 10,64
+          0,47.5
+      "
+    />
+    <path
+      id="RightLoop"
+      style="
+        fill:none;
+        stroke:url(#RightLoopGradient);
+        stroke-width:20
+      "
+      d="
+        m 64 64
+        l 15.8162338159265 15.8162338159265
+        c 8.73506473629425 8.73506473629425
+          22.8974028955586 8.73506473629425
+          31.6324676318529 0
 
-  <path
-    id="RightLeg"
-    style="fill:none;stroke:#3438de;stroke-width:40;stroke-linecap:round"
-    d="
-      m 236,128
-        0,-95" />
+          8.73506473629425 -8.73506473629425
+          8.73506473629425 -22.8974028955586
+          0 -31.6324676318529
 
-  <path
-    id="LeftLeg"
-    style="fill:none;stroke:#f1bc1c;stroke-width:40;stroke-linecap:round"
-    d="
-      m 20,128
-        0,95" />
+          -8.73506473629425 -8.73506473629425
+          -22.8974028955586 -8.73506473629425
+          -31.6324676318529 0
+        z
+      "
+    />
+    <path
+      id="LeftLoop"
+      style="
+        fill:none;
+        stroke:url(#LeftLoopGradient);
+        stroke-width:20
+      "
+      d="
+        m 64 64
+        l -15.8162338159265 15.8162338159265
+        c -8.73506473629425 8.73506473629425
+          -22.8974028955586 8.73506473629425
+          -31.6324676318529 0
 
-  <path
-    id="RightLoop"
-    style="fill:none;stroke:url(#RightLoopGradient);stroke-width:40"
-    d="
-      m 128,128
-      l 31.6324676318529,31.6324676318529
-      c 17.4701294725885,17.4701294725885
-        45.7948057911172,17.4701294725885
-        63.2649352637057,0
+          -8.73506473629425 -8.73506473629425
+          -8.73506473629425 -22.8974028955586
+          0 -31.6324676318529
 
-        17.4701294725885,-17.4701294725885
-        17.4701294725885,-45.7948057911172
-        0,-63.2649352637057
-
-        -17.4701294725885,-17.4701294725885
-        -45.7948057911172,-17.4701294725885
-        -63.2649352637057,0
-      z" />
-
-  <path
-    id="LeftLoop"
-    style="fill:none;stroke:url(#LeftLoopGradient);stroke-width:40"
-    d="
-      m 128 128
-      l -31.6324676318529 31.6324676318529
-      c -17.4701294725885 17.4701294725885
-        -45.7948057911172 17.4701294725885
-        -63.2649352637057 0
-
-        -17.4701294725885 -17.4701294725885
-        -17.4701294725885 -45.7948057911172
-        0 -63.2649352637057
-
-        17.4701294725885 -17.4701294725885
-        45.7948057911172 -17.4701294725885
-        63.2649352637057 0
-      z" />
+          8.73506473629425 -8.73506473629425
+          22.8974028955586 -8.73506473629425
+          31.6324676318529 0
+        z
+      "
+    />
+  </g>
 </svg>
