@@ -6,11 +6,11 @@
 
 [![Build status](https://github.com/KeepDataPrivate/MyPeriodDataIsMine/actions/workflows/build-tests.yaml/badge.svg)](https://github.com/KeepDataPrivate/MyPeriodDataIsMine/actions/workflows/build-tests.yaml)
 
-Your personal data should be yours and yours only; especially if it as personal as your period data.
+Your personal data should be yours and yours only; especially if it is as personal as your period data.
 
 I wouldn’t want my boss to know when I menstruate, just as I wouldn’t want to know when my neighbours have their periods. Each individual should own that information and control who they share it with and when.
 
-The current problem we are facing is that this information – when synced with the cloud, whether it’s encrypted or not – is no longer within our control and therefore it’s no longer private. This information can be, and is being used against us. If your period is late, some authorities may – and do – ask themselves whether you had an illegal abortion.
+The current problem we are facing is that this information – when synced with the cloud, whether it’s encrypted or not – is no longer within our control, and therefore it’s no longer private. This information can be, and is being used against us. If your period is late, some authorities may – and do – ask themselves whether you had an illegal abortion.
 
 **We urgently need to regain control over our period data!**
 
