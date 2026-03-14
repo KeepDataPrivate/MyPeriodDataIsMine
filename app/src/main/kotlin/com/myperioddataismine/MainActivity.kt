@@ -38,7 +38,7 @@ class MainActivity : AppCompatActivity() {
         val inflater: MenuInflater = menuInflater
         inflater.inflate(R.menu.main_menu, menu)
         if (!viewModel.decryptedDatabaseIsOpen()) {
-            menu.findItem(R.id.change_passcode).setVisible(false)
+            menu.findItem(R.id.change_passcode).isVisible = false
         }
         return true
     }
