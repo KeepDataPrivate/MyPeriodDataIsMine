@@ -21,11 +21,11 @@
       android:strokeWidth="8.775"
       android:fillColor="#00000000">
     <aapt:attr name="android:strokeColor">
-      <gradient 
+      <gradient
           android:startX="54"
-          android:startY="43.23"
-          android:endX="78.65"
-          android:endY="43.23"
+          android:startY="44.19"
+          android:endX="77.69"
+          android:endY="44.19"
           android:type="linear">
         <item android:offset="0" android:color="#FFDF28CE"/>
         <item android:offset="1" android:color="#FF2839DF"/>
@@ -37,11 +37,11 @@
       android:strokeWidth="8.775"
       android:fillColor="#00000000">
     <aapt:attr name="android:strokeColor">
-      <gradient 
-          android:startX="29.35"
-          android:startY="43.23"
+      <gradient
+          android:startX="30.31"
+          android:startY="44.19"
           android:endX="54"
-          android:endY="43.23"
+          android:endY="44.19"
           android:type="linear">
         <item android:offset="0" android:color="#FFF1BC1C"/>
         <item android:offset="1" android:color="#FFEA2CCB"/>
