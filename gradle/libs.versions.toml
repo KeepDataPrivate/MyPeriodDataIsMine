@@ -7,7 +7,7 @@ androidx-fragment-ktx = '1.8.9'
 androidx-lifecycle-viewmodel-ktx = '2.10.0'
 androidx-sqlite = '2.6.2'
 google-flexbox = '3.0.0'
-sqlcipher = '4.14.0'
+sqlcipher = '4.14.1'
 
 [plugins]
 android-application = { id = 'com.android.application', version.ref = 'android-gradle-plugin' }
